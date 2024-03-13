@@ -4,9 +4,11 @@ using System.Linq;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Entity : MonoBehaviour
 {
+
     public enum EntityState
     {
         Idle,
@@ -49,5 +51,10 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cd = GetComponent<Collider2D>();
 
+    }
+
+    public void MovePosition()
+    {
+        // Move the entity to the new position
     }
 }

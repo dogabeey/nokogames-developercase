@@ -20,10 +20,6 @@ public class EntityAnimator : MonoBehaviour
 	public float minVelocity = 0.01f;
 	public string idleText;
 	public string runText;
-	public string jumpText;
-	public string carryText;
-	public string verticalText;
-	public string horizontalText;
 
 	public bool Idle
 	{
