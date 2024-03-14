@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class Entity : MonoBehaviour
 {
 
@@ -19,8 +21,8 @@ public class Entity : MonoBehaviour
     public EntityState state;
     public float moveSpeedMultiplier = 1;
 
-    internal Rigidbody2D rb;
-    internal Collider2D cd;
+    internal Rigidbody rb;
+    internal Collider cd;
 
     public virtual float MoveSpeed
     {
@@ -46,15 +48,10 @@ public class Entity : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        cd = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody>();
+        cd = GetComponent<Collider>();
 
-    }
-
-    public void MovePosition()
-    {
-        // Move the entity to the new position
     }
 }

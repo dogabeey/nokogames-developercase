@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 [ExecuteAlways]
 public class ObjectLayoutGroup : MonoBehaviour
@@ -34,14 +35,14 @@ public class ObjectLayoutGroup : MonoBehaviour
 
     private Transform[] GetChildren()
     {
-        if (string.IsNullOrEmpty(childrenTag))
+        Transform[] children = new Transform[transform.childCount];
+
+        for (int i = 0; i < transform.childCount; i++)
         {
-            return GetComponentsInChildren<Transform>();
+            children[i] = transform.GetChild(i);
         }
-        else
-        {
-            return GetComponentsInChildren<Transform>().Where(t => t.CompareTag(childrenTag)).ToArray();
-        }
+
+        return children;
     }
     private void PlaceObjects(Transform[] objects)
     {
@@ -56,7 +57,14 @@ public class ObjectLayoutGroup : MonoBehaviour
                     index++;
                     if (index < objects.Length)
                     {
-                        objects[index].position = startReference.position + offset + new Vector3(i * spacing.x, j * spacing.y, k * spacing.z);
+                        if(Application.isPlaying)
+                        {
+                            objects[index].DOMove(startReference.position + offset + new Vector3(i * spacing.x, j * spacing.y, k * spacing.z), Const.Values.OBJECT_STACK_TWEEN_DURATION);
+                        }
+                        else
+                        {
+                            objects[index].position = startReference.position + offset + new Vector3(i * spacing.x, j * spacing.y, k * spacing.z);
+                        }
                     }
                 }
             }
