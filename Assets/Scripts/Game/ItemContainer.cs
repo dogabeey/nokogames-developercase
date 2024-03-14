@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ItemContainer : MonoBehaviour
 {
@@ -9,9 +10,10 @@ public class ItemContainer : MonoBehaviour
     public List<ItemModel> acceptedItems;
     public ObjectLayoutGroup stackParent;
     public float itemTransferPeriod;
-
-    internal ItemFactory connectedFactory;
-    internal List<WorkerEntity> workers = new List<WorkerEntity>();
+    [ReadOnly]
+    public ItemFactory connectedFactory;
+    [ReadOnly]
+    public List<WorkerEntity> workers = new List<WorkerEntity>();
 
     private void Start()
     {
