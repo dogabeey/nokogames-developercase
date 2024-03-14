@@ -4,15 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Security.Cryptography;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class ItemContainer : MonoBehaviour
 {
     public List<ItemController> items;
-    public List<ItemModel> acceptedItems;
+    public ItemModel acceptedItem;
     public ObjectLayoutGroup stackParent;
     public float itemTransferPeriod;
     public Vector3 rotationOffset;
     public Vector3 scale = Vector3.one;
+    [Space]
+    public SpriteRenderer bgImage;
+    public SpriteRenderer iconImage;
 
     internal ItemFactory connectedFactory;
     internal List<WorkerEntity> workers = new List<WorkerEntity>();
@@ -20,6 +25,7 @@ public class ItemContainer : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(0.5f);
+
         if(IsInput())
         {
             InvokeRepeating(nameof(TakeLastItemsFromWorkers), 0, itemTransferPeriod);
@@ -28,13 +34,16 @@ public class ItemContainer : MonoBehaviour
         {
             InvokeRepeating(nameof(GiveLastItemToFirstWorker), 0, itemTransferPeriod);
         }
+
+        if(bgImage) bgImage.color =  IsInput() ? Color.red : Color.green;
+        if(iconImage) iconImage.sprite = acceptedItem.icon;
     }
 
     private void TakeLastItemsFromWorkers()
     {
         foreach (WorkerEntity worker in workers)
         {
-            List<ItemController> itemsToTake = worker.itemStack.Where(i => acceptedItems.Contains(i.ItemModel)).ToList();
+            List<ItemController> itemsToTake = worker.itemStack.Where(i => acceptedItem == i.ItemModel).ToList();
             if(itemsToTake.Any())
             {
                 ItemController item = itemsToTake.Last();

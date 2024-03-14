@@ -37,7 +37,14 @@ public class ItemFactory : MonoBehaviour
         {
             if (inputContainer.items.Count > 0)
             {
-                ConvertItem(inputContainer.items.Last(i => i.ItemModel == inputItem));
+                if(outputContainer && outputItem)
+                {
+                    ConvertItem(inputContainer.items.Last(i => i.ItemModel == inputItem));
+                }
+                else
+                {
+                    DestroyItem(inputContainer.items.Last(i => i.ItemModel == inputItem));
+                }
             }
         }
         else
@@ -54,6 +61,12 @@ public class ItemFactory : MonoBehaviour
         animator.SetTrigger(productionTriggerAnimText);
 
         outputContainer.SetTransform(item);
+    }
+    public void DestroyItem(ItemController item)
+    {
+        item.ItemModel = outputItem;
+        inputContainer.items.Remove(item);
+        Destroy(item.gameObject);
     }
     public void ProduceItem()
     {
