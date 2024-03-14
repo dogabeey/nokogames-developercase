@@ -36,7 +36,7 @@ public class ItemContainer : MonoBehaviour
         }
 
         if(bgImage) bgImage.color =  IsInput() ? Color.red : Color.green;
-        if(iconImage) iconImage.sprite = acceptedItem.icon;
+        if(iconImage && IsInput()) iconImage.sprite = acceptedItem.icon;
     }
 
     private void TakeLastItemsFromWorkers()
