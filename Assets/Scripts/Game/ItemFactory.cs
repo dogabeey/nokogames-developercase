@@ -21,7 +21,8 @@ public class ItemFactory : MonoBehaviour
 
     private void Start()
     {
-        inputContainer.connectedFactory = this;
+        if(inputContainer)
+            inputContainer.connectedFactory = this;
 
         InvokeRepeating(nameof(ConvertLastOrProduce), 0, productionTime);
     }
@@ -49,7 +50,7 @@ public class ItemFactory : MonoBehaviour
     }
     public void ProduceItem()
     {
-        ItemController item = Instantiate(itemControllerPrefab, inputContainer.stackParent.transform); //TODO: Pooling
+        ItemController item = Instantiate(itemControllerPrefab, outputContainer.stackParent.transform); //TODO: Pooling
         item.itemModel = outputItem;
         outputContainer.items.Add(item);
     }

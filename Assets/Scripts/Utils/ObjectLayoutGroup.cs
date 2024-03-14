@@ -54,7 +54,6 @@ public class ObjectLayoutGroup : MonoBehaviour
             {
                 for(int k = 0; k < maxSizes.z; k++)
                 {
-                    index++;
                     if (index < objects.Length)
                     {
                         if(Application.isPlaying)
@@ -66,6 +65,7 @@ public class ObjectLayoutGroup : MonoBehaviour
                             objects[index].position = startReference.position + offset + new Vector3(i * spacing.x, j * spacing.y, k * spacing.z);
                         }
                     }
+                    index++;
                 }
             }
         }

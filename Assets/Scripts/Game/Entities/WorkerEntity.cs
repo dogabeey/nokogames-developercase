@@ -20,7 +20,7 @@ public class WorkerEntity : Entity
     public void AddItemToEntity(ItemController item)
     {
         itemStack.Add(item);
-        item.transform.SetParent(itemStackParents[itemStack.Count - 1 % itemStackParents.Count].transform);
+        item.transform.SetParent(itemStackParents[itemStack.Count - 1].transform); // TODO: Check overflow
         item.transform.DOLocalMove(Vector3.zero, Const.Values.OBJECT_STACK_TWEEN_DURATION);
     }
 }
