@@ -52,13 +52,15 @@ public class ItemFactory : MonoBehaviour
         item.transform.parent = outputContainer.stackParent.transform;
         outputContainer.items.Add(item);
         animator.SetTrigger(productionTriggerAnimText);
+
+        outputContainer.SetTransform(item);
     }
     public void ProduceItem()
     {
         ItemController item = Instantiate(itemControllerPrefab, outputContainer.stackParent.transform); //TODO: Pooling
         item.itemModel = outputItem;
         outputContainer.items.Add(item);
+
+        outputContainer.SetTransform(item);
     }
-
-
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.Security.Cryptography;
 
 public class ItemContainer : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class ItemContainer : MonoBehaviour
     public List<ItemModel> acceptedItems;
     public ObjectLayoutGroup stackParent;
     public float itemTransferPeriod;
-    [ReadOnly]
-    public ItemFactory connectedFactory;
-    [ReadOnly]
-    public List<WorkerEntity> workers = new List<WorkerEntity>();
+    public Vector3 rotationOffset;
+    public Vector3 scale = Vector3.one;
+
+    internal ItemFactory connectedFactory;
+    internal List<WorkerEntity> workers = new List<WorkerEntity>();
 
     private IEnumerator Start()
     {
@@ -39,6 +41,7 @@ public class ItemContainer : MonoBehaviour
                 worker.itemStack.Remove(item);
                 items.Add(item);
                 item.transform.parent = stackParent.transform;
+                SetTransform(item);
             }
 
         }
@@ -63,6 +66,12 @@ public class ItemContainer : MonoBehaviour
         item.transform.parent = stackParent.transform;
     }
 
+    public void SetTransform(ItemController item)
+    {
+        item.transform.localEulerAngles = rotationOffset;
+        item.transform.localScale = Vector3.Scale(item.transform.localScale, scale);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out WorkerEntity worker))
@@ -77,4 +86,5 @@ public class ItemContainer : MonoBehaviour
             workers.Remove(worker);
         }
     }
+
 }

@@ -3552,6 +3552,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1879352585926334862}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &543450652125828612 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1879352586626050149, guid: 8333f8b6db9e81146b61228d97feac7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1879352585926334862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543450653512914502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6000263234819814662, guid: f4da3d8f4c1a96f43b374bc8592c02a4,
@@ -3622,6 +3628,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2033402894}
     m_Modifications:
+    - target: {fileID: 107622150, guid: 8333f8b6db9e81146b61228d97feac7e, type: 3}
+      propertyPath: rotationOffset.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277832410629110533, guid: 8333f8b6db9e81146b61228d97feac7e,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 543450652125828612}
     - target: {fileID: 1645402561681003830, guid: 8333f8b6db9e81146b61228d97feac7e,
         type: 3}
       propertyPath: m_Name
@@ -3884,6 +3899,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6111260322574111473, guid: f4da3d8f4c1a96f43b374bc8592c02a4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4da3d8f4c1a96f43b374bc8592c02a4, type: 3}
+--- !u!95 &7118405621658360017 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 992027742410458149, guid: 6fa769d36822df642baa1822708747c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8002276187384732916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7296694855771258680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 742771252104012748, guid: 6fa769d36822df642baa1822708747c4,
@@ -3902,6 +3923,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Converter Machine
       objectReference: {fileID: 0}
+    - target: {fileID: 462581099076032325, guid: 6fa769d36822df642baa1822708747c4,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 7118405621658360017}
     - target: {fileID: 742771252104012748, guid: 6fa769d36822df642baa1822708747c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -3956,6 +3982,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716063604837565254, guid: 6fa769d36822df642baa1822708747c4,
+        type: 3}
+      propertyPath: rotationOffset.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002276185861673356, guid: 6fa769d36822df642baa1822708747c4,
+        type: 3}
+      propertyPath: rotationOffset.x
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa769d36822df642baa1822708747c4, type: 3}
