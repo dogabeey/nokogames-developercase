@@ -54,4 +54,24 @@ public class Entity : MonoBehaviour
         cd = GetComponent<Collider>();
 
     }
+
+    internal void Move(Vector3 direction)
+    {
+        if (State == EntityState.Dead)
+        {
+            return;
+        }
+
+        if (direction != Vector3.zero)
+        {
+            transform.DORotateQuaternion(Quaternion.LookRotation(direction), 0.1f);
+            rb.velocity = direction * MoveSpeed;
+            State = EntityState.Run;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+            State = EntityState.Idle;
+        }
+    }
 }

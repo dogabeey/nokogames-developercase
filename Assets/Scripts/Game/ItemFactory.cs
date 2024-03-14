@@ -10,6 +10,8 @@ public class ItemFactory : MonoBehaviour
     public ItemController itemControllerPrefab;
     [Tooltip("Factory will convert the last item in the input container, which is the same type with inputItem, to the output item. If input or itemModel is null, this factory will simply produce the output item out of thin air.")]
     public ItemContainer inputContainer;
+    [Tooltip("The animator of the factory. The production animation will be played on this animator.")]
+    public Animator animator;
     [Tooltip("The container which the factory will send items to.")]
     public ItemContainer outputContainer;
     [Tooltip("Item model of input. The factory will only take these items from the input container.")]
@@ -18,6 +20,8 @@ public class ItemFactory : MonoBehaviour
     public ItemModel outputItem;
     [Tooltip("Production period.")]
     public float productionTime;
+    [Tooltip("Production animation string.")]
+    public string productionTriggerAnimText;
 
     private void Start()
     {
@@ -47,6 +51,7 @@ public class ItemFactory : MonoBehaviour
         inputContainer.items.Remove(item);
         item.transform.parent = outputContainer.stackParent.transform;
         outputContainer.items.Add(item);
+        animator.SetTrigger(productionTriggerAnimText);
     }
     public void ProduceItem()
     {
