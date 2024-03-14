@@ -15,8 +15,9 @@ public class ItemContainer : MonoBehaviour
     [ReadOnly]
     public List<WorkerEntity> workers = new List<WorkerEntity>();
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.5f);
         if(IsInput())
         {
             InvokeRepeating(nameof(TakeLastItemsFromWorkers), 0, itemTransferPeriod);
@@ -32,11 +33,14 @@ public class ItemContainer : MonoBehaviour
         foreach (WorkerEntity worker in workers)
         {
             List<ItemController> itemsToTake = worker.itemStack.Where(i => acceptedItems.Contains(i.itemModel)).ToList();
-            ItemController item = itemsToTake.Last();
+            if(itemsToTake.Any())
+            {
+                ItemController item = itemsToTake.Last();
+                worker.itemStack.Remove(item);
+                items.Add(item);
+                item.transform.parent = stackParent.transform;
+            }
 
-            worker.itemStack.Remove(item);
-            items.Add(item);
-            item.transform.parent = stackParent.transform;
         }
     }
     private void GiveLastItemToFirstWorker()

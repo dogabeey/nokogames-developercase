@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Wood
   maxStack: 20
   icon: {fileID: 0}
-  itemMesh: {fileID: -7511558181221131132, guid: 31712969d9366684f8f7ceed603581ca,
+  itemMesh: {fileID: -7511558181221131132, guid: 03e4e0789e19e00489a066f1d0295564,
     type: 3}

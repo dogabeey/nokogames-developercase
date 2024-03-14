@@ -84,6 +84,8 @@ MonoBehaviour:
   acceptedItems: []
   stackParent: {fileID: 107622149}
   itemTransferPeriod: 0
+  connectedFactory: {fileID: 0}
+  workers: []
 --- !u!114 &107622149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +295,7 @@ MonoBehaviour:
   outputContainer: {fileID: 107622150}
   inputItem: {fileID: 0}
   outputItem: {fileID: 11400000, guid: 7dd44f48e49b2424695245a28b7c91ba, type: 2}
-  productionTime: 0.5
+  productionTime: 1
 --- !u!1 &5026415960675673538
 GameObject:
   m_ObjectHideFlags: 0
