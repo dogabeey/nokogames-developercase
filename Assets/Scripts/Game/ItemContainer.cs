@@ -34,7 +34,7 @@ public class ItemContainer : MonoBehaviour
     {
         foreach (WorkerEntity worker in workers)
         {
-            List<ItemController> itemsToTake = worker.itemStack.Where(i => acceptedItems.Contains(i.itemModel)).ToList();
+            List<ItemController> itemsToTake = worker.itemStack.Where(i => acceptedItems.Contains(i.ItemModel)).ToList();
             if(itemsToTake.Any())
             {
                 ItemController item = itemsToTake.Last();

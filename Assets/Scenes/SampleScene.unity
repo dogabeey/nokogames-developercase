@@ -3928,6 +3928,12 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 7118405621658360017}
+    - target: {fileID: 462581099076032325, guid: 6fa769d36822df642baa1822708747c4,
+        type: 3}
+      propertyPath: outputItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 39f24efbf70c18c4e90bf9db6c6e1c90,
+        type: 2}
     - target: {fileID: 742771252104012748, guid: 6fa769d36822df642baa1822708747c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -3982,6 +3988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716063604837565253, guid: 6fa769d36822df642baa1822708747c4,
+        type: 3}
+      propertyPath: spacing.y
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 1716063604837565254, guid: 6fa769d36822df642baa1822708747c4,
         type: 3}

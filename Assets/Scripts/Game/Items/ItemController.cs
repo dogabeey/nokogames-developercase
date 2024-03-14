@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    public ItemModel itemModel;
     public Transform meshParent;
+
+    private ItemModel itemModel;
 
     public ItemModel ItemModel
     {

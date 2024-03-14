@@ -37,7 +37,7 @@ public class ItemFactory : MonoBehaviour
         {
             if (inputContainer.items.Count > 0)
             {
-                ConvertItem(inputContainer.items.Last(i => i.itemModel == inputItem));
+                ConvertItem(inputContainer.items.Last(i => i.ItemModel == inputItem));
             }
         }
         else
@@ -47,7 +47,7 @@ public class ItemFactory : MonoBehaviour
     }
     public void ConvertItem(ItemController item)
     {
-        item.itemModel = outputItem;
+        item.ItemModel = outputItem;
         inputContainer.items.Remove(item);
         item.transform.parent = outputContainer.stackParent.transform;
         outputContainer.items.Add(item);
@@ -58,7 +58,7 @@ public class ItemFactory : MonoBehaviour
     public void ProduceItem()
     {
         ItemController item = Instantiate(itemControllerPrefab, outputContainer.stackParent.transform); //TODO: Pooling
-        item.itemModel = outputItem;
+        item.ItemModel = outputItem;
         outputContainer.items.Add(item);
 
         outputContainer.SetTransform(item);
