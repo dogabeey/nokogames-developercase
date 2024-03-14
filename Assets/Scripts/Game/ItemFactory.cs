@@ -39,11 +39,11 @@ public class ItemFactory : MonoBehaviour
             {
                 if(outputContainer && outputItem)
                 {
-                    ConvertItem(inputContainer.items.Last(i => i.ItemModel == inputItem));
+                    ConvertItem(inputContainer.items.LastOrDefault(i => i.ItemModel == inputItem));
                 }
                 else
                 {
-                    DestroyItem(inputContainer.items.Last(i => i.ItemModel == inputItem));
+                    DestroyItem(inputContainer.items.LastOrDefault(i => i.ItemModel == inputItem));
                 }
             }
         }
