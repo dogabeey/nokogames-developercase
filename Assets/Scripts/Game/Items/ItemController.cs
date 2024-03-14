@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,10 +22,6 @@ public class ItemController : MonoBehaviour
     }
 
     private void Start()
-    {
-    }
-
-    private void OnValidate()
     {
         if (meshParent.childCount == 0)
             Instantiate(itemModel.itemMesh, meshParent);
