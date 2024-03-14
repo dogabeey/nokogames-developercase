@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17890799, g: 0.22401917, b: 0.30587497, a: 1}
+  m_IndirectSpecularColor: {r: 0.17890818, g: 0.22401965, b: 0.30587563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -732,7 +732,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 27a8b4971dec3404f8348d6210d493ec,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5704499102696965246, guid: 27a8b4971dec3404f8348d6210d493ec,
         type: 3}
@@ -762,7 +762,7 @@ PrefabInstance:
     - target: {fileID: 3196138216412401344, guid: 27a8b4971dec3404f8348d6210d493ec,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.9802
+      value: 89.98021
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a8b4971dec3404f8348d6210d493ec, type: 3}
@@ -1273,7 +1273,7 @@ PrefabInstance:
     - target: {fileID: -2639638324218457063, guid: d221b730100098e47b46239e7ac18ab9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 9.60321
+      value: 89.98021
       objectReference: {fileID: 0}
     - target: {fileID: -2639638324218457063, guid: d221b730100098e47b46239e7ac18ab9,
         type: 3}
@@ -1308,17 +1308,17 @@ PrefabInstance:
     - target: {fileID: 9044806412961212599, guid: d221b730100098e47b46239e7ac18ab9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 9.60321
+      value: 89.98021
       objectReference: {fileID: 0}
     - target: {fileID: 9044806412961212599, guid: d221b730100098e47b46239e7ac18ab9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.0000012752189
+      value: -0.000013660381
       objectReference: {fileID: 0}
     - target: {fileID: 9044806412961212599, guid: d221b730100098e47b46239e7ac18ab9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.000014102964
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d221b730100098e47b46239e7ac18ab9, type: 3}

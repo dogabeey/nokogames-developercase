@@ -14,12 +14,14 @@ public class ObjectLayoutGroup : MonoBehaviour
     public Vector3 spacing;
     [Tooltip("The maximum number of objects in the layout group based on X, Y, Z axis.")]
     public Vector3Int maxSizes;
-    [Tooltip("The tag of the children to be considered for layout. If empty, no tag restriction is applied.")]
-    public string childrenTag;
+
+    private int childCount;
 
     [ExecuteAlways]
     private void Start()
     {
+        childCount = transform.childCount;
+
         if (startReference == null)
         {
             startReference = transform;
@@ -29,19 +31,23 @@ public class ObjectLayoutGroup : MonoBehaviour
     [ExecuteAlways]
     private void Update()
     {
+        if (transform.childCount != childCount)
+        {
+            childCount = transform.childCount;
+            OnChildAdded(transform.GetChild(transform.childCount - 1));
+        }
+
+    }
+    void OnChildAdded(Transform child)
+    {
+        // Insert the code you want to execute when a new child is added
+        Debug.Log("A new child has been added.");
         PlaceObjects(GetChildren());
     }
 
     private Transform[] GetChildren()
     {
-        if (string.IsNullOrEmpty(childrenTag))
-        {
             return GetComponentsInChildren<Transform>();
-        }
-        else
-        {
-            return GetComponentsInChildren<Transform>().Where(t => t.CompareTag(childrenTag)).ToArray();
-        }
     }
     private void PlaceObjects(Transform[] objects)
     {
