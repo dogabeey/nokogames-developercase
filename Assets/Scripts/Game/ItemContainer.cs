@@ -6,18 +6,21 @@ using Sirenix.OdinInspector;
 using System.Security.Cryptography;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using TMPro;
 
 public class ItemContainer : MonoBehaviour
 {
     public List<ItemController> items;
     public ItemModel acceptedItem;
     public ObjectLayoutGroup stackParent;
+    public int maxStacks;
     public float itemTransferPeriod;
     public Vector3 rotationOffset;
     public Vector3 scale = Vector3.one;
     [Space]
     public SpriteRenderer bgImage;
     public SpriteRenderer iconImage;
+    public TMP_Text stackCountText;
 
     internal ItemFactory connectedFactory;
     internal List<WorkerEntity> workers = new List<WorkerEntity>();
@@ -26,7 +29,7 @@ public class ItemContainer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        if(IsInput())
+        if (IsInput())
         {
             InvokeRepeating(nameof(TakeLastItemsFromWorkers), 0, itemTransferPeriod);
         }
@@ -34,9 +37,19 @@ public class ItemContainer : MonoBehaviour
         {
             InvokeRepeating(nameof(GiveLastItemToFirstWorker), 0, itemTransferPeriod);
         }
+    }
 
-        if(bgImage) bgImage.color =  IsInput() ? Color.red : Color.green;
-        if(iconImage && IsInput()) iconImage.sprite = acceptedItem.icon;
+    private void Update()
+    {
+        
+        DrawUI();
+    }
+
+    private void DrawUI()
+    {
+        if (bgImage) bgImage.color = IsInput() ? Color.red : Color.green;
+        if (iconImage && IsInput()) iconImage.sprite = acceptedItem.icon;
+        if (stackCountText) stackCountText.text = items.Count.ToString() + "/" + maxStacks.ToString();
     }
 
     private void TakeLastItemsFromWorkers()
