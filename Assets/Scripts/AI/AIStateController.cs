@@ -4,7 +4,6 @@ using UnityEngine.AI;
 public class AIStateController : MonoBehaviour
 {
     public WorkerEntity workerEntity;
-    public NavMeshAgent agent;
 
     internal WanderState wanderState;
     internal CollectState collectState;
@@ -73,6 +72,6 @@ public class AIStateController : MonoBehaviour
 
     public void MoveToPosition(Vector3 position)
     {
-        agent.SetDestination(position);
+        workerEntity.MoveToPosition(position);
     }
 }

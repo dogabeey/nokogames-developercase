@@ -17,6 +17,8 @@ public class WorkerEntity : Entity
     public TMP_Text stackAmountText;
     public Image stackPanelBG;
 
+    internal float lastItemTake;
+
     private int lastStackCount;
 
     protected override void Start()
@@ -58,6 +60,8 @@ public class WorkerEntity : Entity
 
     public void AddItemToEntity(ItemController item)
     {
+        lastItemTake = Time.time;
+
         itemStack.Add(item);
         item.transform.SetParent(itemStackParents[itemStack.Count - 1].transform); // TODO: Check overflow
         item.transform.DOLocalMove(Vector3.zero, Const.Values.OBJECT_STACK_TWEEN_DURATION);

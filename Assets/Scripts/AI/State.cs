@@ -63,10 +63,9 @@ public class CollectState : State
     public override void OnEnter()
     {
         // Get closest ItemContainer that is not Input.
-        ItemContainer closestOutputContainer = ItemContainer.itemContainers.First(c => Vector3.Distance(
-            AIStateController.transform.position, c.transform.position) == ItemContainer.itemContainers.Min(
+        ItemContainer closestOutputContainer = ItemContainer.itemContainers.First(c => c.items.Count == ItemContainer.itemContainers.Max(
             c => 
-                c.IsInput() ? float.MaxValue : Vector3.Distance(AIStateController.transform.position, c.transform.position)
+                c.IsInput() ? 0 : c.items.Count
             )
         );
         AIStateController.MoveToPosition(closestOutputContainer.transform.position);
@@ -93,6 +92,7 @@ public class SellState : State
     {
         // Get Input container where the player has the same item model as the input's accepted item.
         ItemContainer inputContainer = ItemContainer.itemContainers.First(c => c.IsInput() && c.acceptedItem == AIStateController.workerEntity.itemStack.Last().ItemModel);
+        AIStateController.MoveToPosition(inputContainer.transform.position);
     }
 
     public override void OnUpdate()
