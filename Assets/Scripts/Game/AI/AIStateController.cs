@@ -9,8 +9,7 @@ public class AIStateController : MonoBehaviour
     internal CollectState collectState;
     internal SellState sellState;
 
-    State currentState;
-
+    private State currentState;
     private void OnEnable()
     {
         EventManager.StartListening(Const.GameEvents.WORKER_FULL, OnWorkerFull);
@@ -50,6 +49,12 @@ public class AIStateController : MonoBehaviour
         sellState = new SellState(this);
 
         ChangeState(wanderState);
+
+        // Running current state in case of stucking
+        if(workerEntity.agent.remainingDistance <= workerEntity.agent.stoppingDistance)
+        {
+            InvokeRepeating(nameof(ResetCurrentState), 0, 2f);
+        }
     }
 
     void Update()
@@ -68,6 +73,10 @@ public class AIStateController : MonoBehaviour
         }
         currentState = newState;
         currentState.OnEnter();
+    }
+    public void ResetCurrentState()
+    {
+        ChangeState(currentState);
     }
 
     public void MoveToPosition(Vector3 position)

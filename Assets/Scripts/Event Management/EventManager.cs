@@ -44,15 +44,11 @@ public class EventManager : MonoBehaviour
         Action<EventParam> thisEvent;
         if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            //Add more event to the existing one
             thisEvent += listener;
-
-            //Update the Dictionary
             instance.eventDictionary[eventName] = thisEvent;
         }
         else
         {
-            //Add event to the Dictionary for the first time
             thisEvent += listener;
             instance.eventDictionary.Add(eventName, thisEvent);
         }
@@ -64,10 +60,7 @@ public class EventManager : MonoBehaviour
         Action<EventParam> thisEvent;
         if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            //Remove event from the existing one
             thisEvent -= listener;
-
-            //Update the Dictionary
             instance.eventDictionary[eventName] = thisEvent;
         }
     }
@@ -78,7 +71,6 @@ public class EventManager : MonoBehaviour
         if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
         {
             thisEvent.Invoke(eventParam);
-            // OR USE  instance.eventDictionary[eventName](eventParam);
         }
     }
 }
@@ -97,16 +89,6 @@ public class EventParam
 
     public Transform transform;
     public Entity entity;
-
-    public EventParam()
-    {
-
-    }
-
-    public EventParam(Dictionary<string, object> paramDictionary)
-    {
-        this.paramDictionary = paramDictionary;
-    }
 
     public EventParam(GameObject paramObj = null, int paramInt = 0, float paramFloat = 0f, string paramStr = "", Type paramType = null, Dictionary<string, object> paramDictionary = null,
     Vector3[] vectorList = null, bool paramBool = false, Entity entity = null)
