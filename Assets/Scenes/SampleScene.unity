@@ -1581,6 +1581,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 543450652125828612}
+    - target: {fileID: 1277832410629110533, guid: 8333f8b6db9e81146b61228d97feac7e,
+        type: 3}
+      propertyPath: productionTime
+      value: 0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 1645402561681003830, guid: 8333f8b6db9e81146b61228d97feac7e,
         type: 3}
       propertyPath: m_Name
@@ -1860,6 +1865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Converter Machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 462581099076032325, guid: 6fa769d36822df642baa1822708747c4,
+        type: 3}
+      propertyPath: productionTime
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 742771252104012748, guid: 6fa769d36822df642baa1822708747c4,
         type: 3}

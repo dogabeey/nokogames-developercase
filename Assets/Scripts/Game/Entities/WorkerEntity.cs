@@ -16,7 +16,15 @@ public class WorkerEntity : Entity
     {
         base.Start();
     }
-
+    private void Update()
+    {
+        foreach (Transform stackParent in itemStackParents)
+        {
+            Vector3 angles = stackParent.InverseTransformDirection(rb.velocity) / 5;
+            angles = new Vector3(angles.x, angles.z, angles.y);
+            stackParent.DOLocalRotate(angles, 0.22f);
+        }
+    }
     public void AddItemToEntity(ItemController item)
     {
         itemStack.Add(item);

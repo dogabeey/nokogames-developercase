@@ -31,6 +31,7 @@ public class ObjectLayoutGroup : MonoBehaviour
     private void Update()
     {
         PlaceObjects(GetChildren());
+
     }
 
     private Transform[] GetChildren()
@@ -44,6 +45,7 @@ public class ObjectLayoutGroup : MonoBehaviour
 
         return children;
     }
+
     private void PlaceObjects(Transform[] objects)
     {
         int index = 0;
