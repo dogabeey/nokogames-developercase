@@ -1,8 +1,10 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorkerEntity : Entity
 {
@@ -11,6 +13,11 @@ public class WorkerEntity : Entity
     public List<ItemController> itemStack;
     public int maxCarryAmount = 10;
     public float stackSpacing;
+    [Space]
+    public TMP_Text stackAmountText;
+    public Image stackPanelBG;
+
+    private int lastStackCount;
 
     protected override void Start()
     {
@@ -24,7 +31,31 @@ public class WorkerEntity : Entity
             angles = new Vector3(angles.x, angles.z, angles.y);
             stackParent.DOLocalRotate(angles, 0.22f);
         }
+
+        DrawUI();
+
+        if(lastStackCount != itemStack.Count)
+        {
+            if (itemStack.Count == maxCarryAmount)
+            {
+                EventManager.TriggerEvent(Const.GameEvents.WORKER_FULL, new EventParam(paramObj: gameObject));
+            }
+            if (itemStack.Count == 0)
+            {
+                EventManager.TriggerEvent(Const.GameEvents.WORKER_EMPTY, new EventParam(paramObj: gameObject));
+            }
+        }
+
+        lastStackCount = itemStack.Count;
     }
+
+    private void DrawUI()
+    {
+        if(stackAmountText) stackAmountText.text = itemStack.Count.ToString() + "/" + maxCarryAmount.ToString();
+        if(stackPanelBG) stackPanelBG.color = Color.Lerp(Color.blue, Color.red, (float)itemStack.Count / maxCarryAmount);
+    }
+
+
     public void AddItemToEntity(ItemController item)
     {
         itemStack.Add(item);

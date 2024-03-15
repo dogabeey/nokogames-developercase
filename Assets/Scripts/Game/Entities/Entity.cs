@@ -23,6 +23,7 @@ public class Entity : MonoBehaviour
 
     internal Rigidbody rb;
     internal Collider cd;
+    internal NavMeshAgent agent;
 
     public virtual float MoveSpeed
     {
@@ -52,7 +53,22 @@ public class Entity : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cd = GetComponent<Collider>();
+        agent = GetComponent<NavMeshAgent>();
+    }
 
+    private void Update()
+    {
+        if(agent)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                State = EntityState.Idle;
+            }
+            else
+            {
+                State = EntityState.Run;
+            }
+        }
     }
 
     internal void Move(Vector3 direction)
@@ -70,8 +86,23 @@ public class Entity : MonoBehaviour
         }
         else
         {
+            rb.angularVelocity = Vector3.zero;
             rb.velocity = Vector3.zero;
             State = EntityState.Idle;
+        }
+    }
+
+    internal void MoveToPosition(Vector3 position)
+    {
+        if (State == EntityState.Dead)
+        {
+            return;
+        }
+
+        if(agent)
+        {
+            agent.SetDestination(position);
+
         }
     }
 }

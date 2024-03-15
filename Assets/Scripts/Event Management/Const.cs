@@ -16,5 +16,10 @@ public struct Const
         public static string CREATURE_JUMP = "CREATURE_JUMP";
 
         public static string PLAYER_CREATED = "PLAYER_CREATED";
+
+        public static string WORKER_FULL = "WORKER_FULL";
+        public static string WORKER_EMPTY = "WORKER_EMPTY";
+        public static string MACHINE_INPUT_FULL = "MACHINE_INPUT_FULL";
+        public static string MACHINE_OUTPUT_EMPTY = "MACHINE_OUTPUT_EMPTY";
     }
 }

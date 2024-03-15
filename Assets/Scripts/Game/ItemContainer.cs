@@ -10,6 +10,8 @@ using TMPro;
 
 public class ItemContainer : MonoBehaviour
 {
+    public static List<ItemContainer> itemContainers = new();
+
     public List<ItemController> items;
     public ItemModel acceptedItem;
     public ObjectLayoutGroup stackParent;
@@ -25,8 +27,12 @@ public class ItemContainer : MonoBehaviour
     internal ItemFactory connectedFactory;
     internal List<WorkerEntity> workers = new List<WorkerEntity>();
 
+    private int lastStackCount;
+
     private IEnumerator Start()
     {
+        itemContainers.Add(this);
+
         yield return new WaitForSeconds(0.5f);
 
         if (IsInput())
@@ -43,6 +49,25 @@ public class ItemContainer : MonoBehaviour
     {
         
         DrawUI();
+
+        if (lastStackCount != items.Count)
+        {
+            if (items.Count == maxStacks && IsInput())
+            {
+                EventManager.TriggerEvent(Const.GameEvents.MACHINE_INPUT_FULL, new EventParam(paramObj: gameObject));
+            }
+            if (items.Count == 0 && !IsInput())
+            {
+                EventManager.TriggerEvent(Const.GameEvents.MACHINE_OUTPUT_EMPTY, new EventParam(paramObj: gameObject));
+            }
+        }
+
+        lastStackCount = items.Count;
+    }
+
+    private void OnDestroy()
+    {
+        itemContainers.Remove(this);
     }
 
     private void DrawUI()
@@ -73,10 +98,13 @@ public class ItemContainer : MonoBehaviour
         if(workers.Count > 0 && items.Count > 0)
         {
             WorkerEntity worker = workers[0];
-            ItemController item = items.Last();
+            if(worker.itemStack.Count < worker.maxCarryAmount)
+            {
+                ItemController item = items.Last();
 
-            items.Remove(item);
-            worker.AddItemToEntity(item);
+                items.Remove(item);
+                worker.AddItemToEntity(item);
+            }
         }
     }
 
