@@ -33,7 +33,7 @@ public class WorkerEntity : Entity
         {
             Vector3 angles = stackParent.InverseTransformDirection(rb.velocity) / 5;
             angles = new Vector3(angles.x, angles.z, angles.y);
-            stackParent.DOLocalRotate(angles, 0.22f);
+            stackParent.DOLocalRotate(angles, 0.12f);
         }
 
         DrawUI();

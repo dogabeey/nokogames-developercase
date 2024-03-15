@@ -79,6 +79,11 @@ public class ItemContainer : MonoBehaviour
 
     private void TakeLastItemsFromWorkers()
     {
+        if(items.Count >= maxStacks)
+        {
+            return;
+        }
+
         foreach (WorkerEntity worker in workers)
         {
             List<ItemController> itemsToTake = worker.itemStack.Where(i => acceptedItem == i.ItemModel).ToList();
