@@ -56,14 +56,7 @@ public class ObjectLayoutGroup : MonoBehaviour
                 {
                     if (index < objects.Length)
                     {
-                        if(Application.isPlaying)
-                        {
-                            objects[index].DOMove(startReference.position + offset + new Vector3(i * spacing.x, j * spacing.y, k * spacing.z), Const.Values.OBJECT_STACK_TWEEN_DURATION);
-                        }
-                        else
-                        {
-                            objects[index].position = startReference.position + offset + new Vector3(i * spacing.x, j * spacing.y, k * spacing.z);
-                        }
+                        objects[index].position = startReference.position + offset + new Vector3(i * spacing.x, j * spacing.y, k * spacing.z);
                     }
                     index++;
                 }

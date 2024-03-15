@@ -22,5 +22,6 @@ public class WorkerEntity : Entity
         itemStack.Add(item);
         item.transform.SetParent(itemStackParents[itemStack.Count - 1].transform); // TODO: Check overflow
         item.transform.DOLocalMove(Vector3.zero, Const.Values.OBJECT_STACK_TWEEN_DURATION);
+        item.transform.DOLocalRotate(Vector3.zero, Const.Values.OBJECT_STACK_TWEEN_DURATION);
     }
 }
