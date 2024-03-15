@@ -53,14 +53,15 @@ public class Entity : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cd = GetComponent<Collider>();
-        agent = GetComponent<NavMeshAgent>();
+
+        TryGetComponent(out agent);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(agent)
         {
-            if (agent.remainingDistance <= agent.stoppingDistance)
+            if (agent.velocity.sqrMagnitude < 0.1f)
             {
                 State = EntityState.Idle;
             }

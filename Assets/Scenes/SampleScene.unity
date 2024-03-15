@@ -2765,6 +2765,21 @@ PrefabInstance:
       propertyPath: workerEntity
       value: 
       objectReference: {fileID: 3655023678894056029}
+    - target: {fileID: -720247035927392582, guid: 8539ef463dc4c4a408b7e7ec07ad1b84,
+        type: 3}
+      propertyPath: m_Speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -720247035927392582, guid: 8539ef463dc4c4a408b7e7ec07ad1b84,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: -720247035927392582, guid: 8539ef463dc4c4a408b7e7ec07ad1b84,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6953849545521010435, guid: 8539ef463dc4c4a408b7e7ec07ad1b84,
         type: 3}
       propertyPath: m_RootOrder

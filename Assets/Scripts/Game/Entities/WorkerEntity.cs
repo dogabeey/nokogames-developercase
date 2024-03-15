@@ -25,8 +25,10 @@ public class WorkerEntity : Entity
     {
         base.Start();
     }
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         foreach (Transform stackParent in itemStackParents)
         {
             Vector3 angles = stackParent.InverseTransformDirection(rb.velocity) / 5;

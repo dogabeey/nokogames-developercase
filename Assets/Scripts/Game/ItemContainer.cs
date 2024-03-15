@@ -90,7 +90,10 @@ public class ItemContainer : MonoBehaviour
                 item.transform.parent = stackParent.transform;
                 SetTransform(item);
             }
-
+            else
+            {
+                EventManager.TriggerEvent(Const.GameEvents.WORKER_EMPTY, new EventParam(paramObj: worker.gameObject));
+            }
         }
     }
     private void GiveLastItemToFirstWorker()

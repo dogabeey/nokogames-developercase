@@ -38,12 +38,10 @@ public class WanderState : State
 
     public override void OnEnter()
     {
-        Debug.Log("WanderState OnEnter");
     }
 
     public override void OnUpdate()
     {
-        Debug.Log("WanderState OnUpdate");
         if (Time.time - startTime > 5)
         {
             AIStateController.ChangeState(new CollectState(AIStateController));
@@ -52,7 +50,6 @@ public class WanderState : State
 
     public override void OnExit()
     {
-        Debug.Log("WanderState OnExit");
     }
 }
 public class CollectState : State
@@ -73,12 +70,10 @@ public class CollectState : State
 
     public override void OnUpdate()
     {
-        Debug.Log("CollectState OnUpdate");
     }
 
     public override void OnExit()
     {
-        Debug.Log("CollectState OnExit");
     }
 }
 
@@ -97,11 +92,9 @@ public class SellState : State
 
     public override void OnUpdate()
     {
-        Debug.Log("SellState OnUpdate");
     }
 
     public override void OnExit()
     {
-        Debug.Log("SellState OnExit");
     }
 }
