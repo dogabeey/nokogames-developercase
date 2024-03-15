@@ -71,13 +71,14 @@ public class ItemFactory : MonoBehaviour
     public void DestroyItem(ItemController item)
     {
         inputContainer.items.Remove(item);
-        Destroy(item.gameObject);
+        SimplePool.Despawn(item.gameObject);
 
         animator.SetTrigger(productionTriggerAnimText);
     }
     public void ProduceItem()
     {
-        ItemController item = Instantiate(itemControllerPrefab, outputContainer.stackParent.transform); //TODO: Pooling
+        ItemController item = SimplePool.Spawn(itemControllerPrefab.gameObject, outputContainer.stackParent.transform.position, outputContainer.stackParent.transform.rotation).GetComponent<ItemController>(); //TODO: Pooling
+        item.transform.parent = outputContainer.stackParent.transform;
         item.ItemModel = outputItem;
         outputContainer.items.Add(item);
 

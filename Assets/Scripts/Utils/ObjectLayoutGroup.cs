@@ -18,7 +18,9 @@ public class ObjectLayoutGroup : MonoBehaviour
     [Tooltip("The tag of the children to be considered for layout. If empty, no tag restriction is applied.")]
     public string childrenTag;
 
-    [ExecuteAlways]
+    private int childCount;
+
+
     private void Start()
     {
         if (startReference == null)
@@ -27,11 +29,13 @@ public class ObjectLayoutGroup : MonoBehaviour
         }
     }
 
-    [ExecuteAlways]
     private void Update()
     {
-        PlaceObjects(GetChildren());
-
+        if (childCount != transform.childCount)
+        {
+            childCount = transform.childCount;
+            PlaceObjects(GetChildren());
+        }
     }
 
     private Transform[] GetChildren()
